@@ -59,6 +59,6 @@ jobs:
           sudo apt-get install sshpass -y 
           sudo apt-get update -y
           sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
-          $text = 'Hello World!' | Out-File $text -FilePath C:\Users\text.txt
+         
 
          
