@@ -55,12 +55,14 @@ jobs:
             USER_NAME_WINDOWS : ${{ secrets.USER_NAME_WINDOWS  }}
             USER_PASSWORD : ${{ secrets.USER_PASSWORD  }}
 
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          sudo apt-get install sshpass -y 
-          sudo apt-get update -y
-          sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
-          shell: pwsh
+        # run: |
+        #   echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        #   sudo apt-get install sshpass -y 
+        #   sudo apt-get update -y
+        #   sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
+        shell: pwsh
+        run: | 
+         ssh -i ${PRIVATE_KEY}${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
          
 
          
