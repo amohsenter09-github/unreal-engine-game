@@ -59,4 +59,5 @@ jobs:
           sudo apt-get install sshpass -y 
           sudo apt-get update -y
           sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
+          cd .\Downloads\
           git clone https://github.com/amohsenter09-github/unreal-engine-game.git
