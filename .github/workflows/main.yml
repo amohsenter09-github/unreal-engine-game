@@ -26,7 +26,7 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
 
-  Deploy:
+  DeployOnUbuntu:
     needs: build
     runs-on: ubuntu-latest
     
@@ -54,16 +54,9 @@ jobs:
             HOST_NAME_WINDOWS : ${{ secrets.HOST_NAME_WINDOWS  }}
             USER_NAME_WINDOWS : ${{ secrets.USER_NAME_WINDOWS  }}
             USER_PASSWORD : ${{ secrets.USER_PASSWORD  }}
-
-        # run: |
-        #   echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        #   sudo apt-get install sshpass -y 
-        #   sudo apt-get update -y
-        #   sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
-        shell: pwsh
-        run: | 
-         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-         ssh -i private_key ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
-         
-
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          sudo apt-get install sshpass -y 
+          sudo apt-get update -y
+          sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
          
