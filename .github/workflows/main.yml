@@ -56,7 +56,7 @@ jobs:
             USER_PASSWORD : ${{ secrets.USER_PASSWORD  }}
         shell: pwsh
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+         
           sudo apt-get install sshpass -y 
           sudo apt-get update -y
           sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
