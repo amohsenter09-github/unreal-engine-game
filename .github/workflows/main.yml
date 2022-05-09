@@ -62,6 +62,7 @@ jobs:
         #   sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
         shell: pwsh
         run: | 
+         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
          ssh -i ${PRIVATE_KEY}${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
          
 
