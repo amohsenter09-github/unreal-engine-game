@@ -63,7 +63,7 @@ jobs:
         shell: pwsh
         run: | 
          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-         ssh -i ${PRIVATE_KEY}${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
+         ssh -i private_key ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
          
 
          
