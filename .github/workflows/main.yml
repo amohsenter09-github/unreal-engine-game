@@ -43,3 +43,20 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
           sudo apt-get update -y
 
+  DeployONwindows:
+   runs-on: ubuntu-latest
+    
+   steps:
+      - uses: actions/checkout@v2 
+      - name: Deploy in windows
+        env:
+            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOST_NAME_WINDOWS : ${{ secrets.HOST_NAME_WINDOWS  }}
+            USER_NAME_WINDOWS : ${{ secrets.USER_NAME_WINDOWS  }}
+            USER_PASSWORD : ${{ secrets.USER_PASSWORD  }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          apt-get install sshpass -y 
+          sudo apt-get update -y
+          sshpass -p ${USER_PASSWORD} ssh -o StrictHostKeyChecking=no ${USER_NAME_WINDOWS}@${HOST_NAME_WINDOWS}
+         
